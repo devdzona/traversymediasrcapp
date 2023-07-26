@@ -1,9 +1,8 @@
 import courseSchema from "./courseSchema.js";
 
-const updateCourses = (courses) => {
-    const dataToStore = new courseSchema(courses)
+const updateCourses = async (courses) => {
     try {
-        dataToStore.create({
+        await courseSchema.create({
             title: courses.title,
             level: courses.level,
             url: courses.url
