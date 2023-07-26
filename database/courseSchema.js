@@ -6,4 +6,4 @@ const courseSchema = mongoose.Schema({
     url: String
 })
 
-export default mongoose.model('courseSchema', courseSchema)
+export default mongoose.model('courses', courseSchema)
