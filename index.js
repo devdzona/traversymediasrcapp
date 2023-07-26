@@ -1,7 +1,7 @@
 import puppeteer from "puppeteer";
-//import fs from "fs"
 import connectDB from "./database/db.js";
 import dotenv from "dotenv";
+import courseSchema from "./database/courseSchema.js";
 
 dotenv.config()
 connectDB()
@@ -18,6 +18,15 @@ const run = async () => {
             url: e.querySelector('.card-footer a').href
         }))
     )
+
+    const dataToStore = new courseSchema(courses)
+    try {
+        dataToStore.save()
+        console.log('Data saved in MongoDB')
+    } catch (error) {
+        console.log('Data is not saved in MongoDB')
+        throw error
+    }
 
     await browser.close()
 }
