@@ -19,13 +19,9 @@ const run = async () => {
         }))
     )
 
-    const { title, level, url } = [...courses]
-
-    updateCourses({
-        title: title,
-        level: level,
-        url: url
-    })
+    for (const c of courses) {
+        updateCourses(c)
+    }
 
     await browser.close()
 }
